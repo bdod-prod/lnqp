@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://lnqp.io/privacy">
+  <title>Privacy Policy - LNQP</title>
+  <meta name="description" content="Privacy Policy for LNQP. Learn how we collect, use, and protect your personal data.">
+
+  <!-- Favicon -->
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="images/logos/lnqp-diamond.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <!-- Self-hosted fonts -->
+  <link rel="stylesheet" href="fonts/fonts.css">
+
+  <style>
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #052037;
+      --teal: #58CDD0;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-300: #d4d4d4;
+      --gray-400: #a3a3a3;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-700: #404040;
+      --gray-800: #262626;
+      --gray-900: #171717;
+
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      --container-padding: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    /* ==================== HEADER ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(5, 32, 55, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--teal);
+    }
+
+    .nav-cta {
+      display: inline-block;
+      padding: 0.625rem 1.5rem;
+      background: var(--teal);
+      color: var(--navy) !important;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: #6dd6d9;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 6px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--navy);
+      padding: 6rem 2rem 2rem;
+      transition: right 0.3s ease;
+      z-index: 999;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      display: block;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 1.125rem;
+      font-weight: 500;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--teal);
+    }
+
+    .mobile-nav .nav-cta {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 998;
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+    }
+
+
+
+    /* ==================== PAGE HERO ==================== */
+    .page-hero {
+      background: var(--navy);
+      padding: calc(72px + 4rem) 0 4rem;
+      text-align: center;
+    }
+
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ==================== CONTENT ==================== */
+    .legal-content {
+      padding: 4rem 0;
+      background: var(--gray-50);
+    }
+
+    .legal-content .container {
+      max-width: 800px;
+    }
+
+    .legal-section {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 3rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .legal-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .legal-section h2:first-child {
+      margin-top: 0;
+    }
+
+    .legal-section p {
+      color: var(--gray-700);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .legal-section ul {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+      color: var(--gray-700);
+    }
+
+    .legal-section ul li {
+      margin-bottom: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      background: var(--gray-900);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tagline {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.875rem;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--white);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--teal);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-legal a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover {
+      color: var(--teal);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 1024px) {
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+        @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+
+      .menu-toggle,
+      .mobile-nav,
+      .mobile-overlay {
+        display: block;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .legal-section {
+        padding: 2rem 1.5rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .footer-legal {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <span class="logo-icon"><img src="images/logos/lnqp-diamond.svg" alt=""></span>
+        LNQP
+      </a>
+      <nav class="nav">
+        <a href="services">Services</a>
+        <a href="case-studies">Case Studies</a>
+        <a href="insights">Insights</a>
+        <a href="about">About</a>
+        <a href="contact" class="nav-cta">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>How we collect, use, and protect your personal data.</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-section">
+
+        <h2>1. Data Controller</h2>
+        <p>Responsible for data processing:</p>
+        <p>Artyom Pugachev<br>
+        Business address: See <a href="imprint">Imprint</a></p>
+        <p>For any questions regarding data protection, please contact us at <a href="mailto:artyom@lnqp.io">artyom@lnqp.io</a>.</p>
+
+        <h2>2. Types of Data Collected</h2>
+        <p>We collect and process the following personal data:</p>
+        <ul>
+          <li>Information provided via the contact form (name, company, corporate email, phone number).</li>
+          <li>Technical data (e.g., IP address, browser type, operating system, and access times) via Google Analytics.</li>
+          <li>Google Fonts usage, which may lead to a connection to Google servers.</li>
+        </ul>
+
+        <h2>3. Purpose of Data Processing</h2>
+        <p>We process personal data for the following purposes:</p>
+        <ul>
+          <li>Responding to inquiries submitted via the contact form.</li>
+          <li>Analyzing website traffic and user behavior through Google Analytics.</li>
+          <li>Ensuring proper website display using Google Fonts.</li>
+        </ul>
+
+        <h2>4. Legal Basis for Processing</h2>
+        <p>Data is processed based on:</p>
+        <ul>
+          <li>Art. 6(1)(b) GDPR (contractual necessity) for handling contact inquiries.</li>
+          <li>Art. 6(1)(a) GDPR (user consent) for Google Analytics and Google Fonts.</li>
+          <li>Art. 6(1)(f) GDPR (legitimate interest) for website functionality and security.</li>
+        </ul>
+
+        <h2>5. Data Sharing with Third Parties</h2>
+        <p>We may share data with:</p>
+        <ul>
+          <li>Google LLC (Google Analytics, Google Fonts).</li>
+        </ul>
+        <p>Data transfers to the U.S. are based on the EU Standard Contractual Clauses.</p>
+
+        <h2>6. Data Retention</h2>
+        <p>Personal data is stored only as long as necessary for the intended purpose. Contact form data is deleted after responding to inquiries unless further retention is required.</p>
+
+        <h2>7. User Rights</h2>
+        <p>Users have the right to:</p>
+        <ul>
+          <li>Access, correct, or delete their data.</li>
+          <li>Restrict or object to processing.</li>
+          <li>Data portability.</li>
+          <li>Withdraw consent at any time (without affecting past lawful processing).</li>
+          <li>File a complaint with a supervisory authority.</li>
+        </ul>
+
+        <h2>8. Cookies & Tracking Technologies</h2>
+        <p>Google Analytics uses cookies to track website usage. Users can disable cookies via their browser settings or use Google's opt-out tools.</p>
+        <p>Google Fonts may collect user data when loading fonts from Google servers.</p>
+
+        <h2>9. Data Security</h2>
+        <p>We implement security measures to protect personal data from unauthorized access, loss, or misuse.</p>
+
+        <h2>10. Updates to this Privacy Policy</h2>
+        <p>We may update this policy to comply with legal requirements. The latest version is always available on this website.</p>
+
+        <h2>11. Contact</h2>
+        <p>For data protection inquiries, please use the contact details in the <a href="imprint">Imprint</a> section or email us at <a href="mailto:artyom@lnqp.io">artyom@lnqp.io</a>.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="logo" style="color: var(--white); margin-bottom: 1rem;">
+            <span class="logo-icon"><img src="images/logos/lnqp-diamond.svg" alt=""></span>
+            LNQP
+          </a>
+          <p>Custom market research for healthcare and life sciences companies.</p>
+          <p class="footer-tagline">"Knowledge is of no value unless you put it into practice"</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services">All Services</a></li>
+            <li><a href="market-sizing">Market Sizing</a></li>
+            <li><a href="competitive-analysis">Competitive Analysis</a></li>
+            <li><a href="demand-validation">Demand Validation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about">About LNQP</a></li>
+            <li><a href="case-studies">Case Studies</a></li>
+            <li><a href="insights">Insights</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/apugachev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:artyom@lnqp.io">Email Us</a></li>
+            <li><a href="contact">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LNQP. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy">Privacy Policy</a>
+          <a href="imprint">Imprint</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    mobileOverlay.addEventListener('click', toggleMenu);
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

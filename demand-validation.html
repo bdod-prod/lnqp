@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://lnqp.io/demand-validation">
+  <title>Demand Validation - LNQP</title>
+  <meta name="description" content="Test product-market fit before you invest. Primary research with real buyers to validate demand, willingness to pay, and adoption barriers in healthcare markets.">
+
+  <!-- Favicon -->
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="images/logos/lnqp-diamond.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+  <!-- Fonts -->
+  <!-- Self-hosted fonts -->
+  <link rel="stylesheet" href="fonts/fonts.css">
+
+  <style>
+    /* ==================== RESET & BASE ==================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #052037;
+      --teal: #58CDD0;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-300: #d4d4d4;
+      --gray-400: #a3a3a3;
+      --gray-500: #737373;
+      --gray-600: #525252;
+      --gray-700: #404040;
+      --gray-800: #262626;
+      --gray-900: #171717;
+
+      --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+      --section-padding: clamp(3rem, 8vw, 6rem);
+      --container-padding: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--white);
+      color: var(--gray-800);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .container-narrow {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .section {
+      padding: var(--section-padding) 0;
+    }
+
+    /* ==================== HEADER ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(5, 32, 55, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
+
+    .logo {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+    }
+
+    .logo-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--teal);
+    }
+
+    .nav-cta {
+      display: inline-block;
+      padding: 0.625rem 1.5rem;
+      background: var(--teal);
+      color: var(--navy) !important;
+      font-weight: 600;
+      font-size: 0.9375rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .nav-cta:hover {
+      background: #6dd6d9;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Menu */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 6px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100vh;
+      background: var(--navy);
+      padding: 6rem 2rem 2rem;
+      transition: right 0.3s ease;
+      z-index: 999;
+      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .mobile-nav.active {
+      right: 0;
+    }
+
+    .mobile-nav a {
+      display: block;
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+      font-size: 1.125rem;
+      font-weight: 500;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: color 0.2s;
+    }
+
+    .mobile-nav a:hover {
+      color: var(--teal);
+    }
+
+    .mobile-nav .nav-cta {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 998;
+    }
+
+    .mobile-overlay.active {
+      opacity: 1;
+    }
+
+
+
+    /* ==================== SERVICE HERO ==================== */
+    .service-hero {
+      background: var(--navy);
+      padding: calc(72px + 4rem) 0 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* World map background - already dim, use lower opacity */
+    .service-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('images/world-map.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .service-hero-content {
+      max-width: 700px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .service-hero-content .service-eyebrow {
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+
+    .service-hero-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.25rem, 4.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .service-hero-content p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2rem;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: #6dd6d9;
+      transform: translateY(-2px);
+    }
+
+    /* ==================== SECTION HEADERS ==================== */
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header.centered {
+      text-align: center;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-eyebrow {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .section-description {
+      font-size: 1.125rem;
+      color: var(--gray-600);
+      line-height: 1.7;
+    }
+
+    /* ==================== PROBLEM SECTION ==================== */
+    .problem-section {
+      background: var(--white);
+      position: relative;
+      overflow: visible;
+    }
+
+    .problem-section::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 400px;
+      height: 500px;
+      background-image: url('images/service-challenge.webp');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      opacity: 0.05;
+      filter: grayscale(100%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .problem-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .problem-content {
+      max-width: 800px;
+    }
+
+    .problem-content p {
+      font-size: 1.125rem;
+      color: var(--gray-700);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==================== BENEFITS SECTION ==================== */
+    .benefits-section {
+      background: var(--gray-50);
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .benefit-card:hover {
+      border-color: var(--teal);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .benefit-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .benefit-card p {
+      color: var(--gray-600);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ==================== APPROACH SECTION ==================== */
+    .approach-section {
+      background: var(--navy);
+      color: var(--white);
+      position: relative;
+    }
+
+    .approach-section::before {
+
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/bg-hexagons.svg');
+      background-size: 800px;
+      background-position: center;
+      opacity: 0.01;
+      pointer-events: none;
+    }
+
+    .approach-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .approach-section .section-eyebrow {
+      color: var(--teal);
+    }
+
+    .approach-section .section-title {
+      color: var(--white);
+    }
+
+    .approach-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .approach-step {
+      position: relative;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--teal);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .approach-step h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .approach-step ul {
+      list-style: none;
+    }
+
+    .approach-step li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.9375rem;
+      line-height: 1.5;
+    }
+
+    .approach-step li::before {
+      content: '·';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: bold;
+    }
+
+    /* ==================== WHAT WE TEST SECTION ==================== */
+    .testing-section {
+      background: var(--white);
+    }
+
+    .testing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testing-card {
+      padding: 2rem;
+      background: var(--gray-50);
+      border-radius: 12px;
+      border-left: 4px solid var(--teal);
+    }
+
+    .testing-type {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .testing-card p {
+      color: var(--gray-700);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+    }
+
+    /* ==================== DELIVERABLES SECTION ==================== */
+    .deliverables-section {
+      background: var(--gray-50);
+    }
+
+    .deliverables-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .deliverables-list {
+      list-style: none;
+    }
+
+    .deliverables-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .deliverables-list li:last-child {
+      border-bottom: none;
+    }
+
+    .deliverable-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(88, 205, 208, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--teal);
+    }
+
+    .deliverable-text {
+      font-size: 1rem;
+      color: var(--gray-700);
+      line-height: 1.5;
+    }
+
+    .deliverable-text strong {
+      display: block;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .use-cases {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 2rem;
+    }
+
+    .use-cases h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+    }
+
+    .use-cases-list {
+      list-style: none;
+    }
+
+    .use-cases-list li {
+      position: relative;
+      padding: 1rem 0 1rem 2rem;
+      border-bottom: 1px solid var(--gray-200);
+      color: var(--gray-700);
+    }
+
+    .use-cases-list li:last-child {
+      border-bottom: none;
+    }
+
+    .use-cases-list li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: bold;
+    }
+
+    /* ==================== CTA SECTION ==================== */
+    .cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('images/cta-calm.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(5, 32, 55, 0.85);
+    }
+
+    .cta-section .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box {
+      border-radius: 16px;
+      padding: 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.75rem, 3.5vw, 2.25rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      background: var(--gray-900);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .footer-tagline {
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.875rem;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-heading);
+      color: var(--white);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 0.9375rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--teal);
+    }
+
+    .footer-bottom {
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-legal a {
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-legal a:hover {
+      color: var(--teal);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 1024px) {
+      .service-hero-content {
+        text-align: center;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .approach-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .testing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .deliverables-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+        @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+
+      .menu-toggle,
+      .mobile-nav,
+      .mobile-overlay {
+        display: block;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .footer-legal {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .cta-box {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="/" class="logo">
+        <span class="logo-icon"><img src="images/logos/lnqp-diamond.svg" alt=""></span>
+        LNQP
+      </a>
+      <nav class="nav">
+        <a href="services">Services</a>
+        <a href="case-studies">Case Studies</a>
+        <a href="insights">Insights</a>
+        <a href="about">About</a>
+        <a href="contact" class="nav-cta">Get in Touch</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Service Hero -->
+  <section class="service-hero">
+    <div class="container">
+      <div class="service-hero-content">
+        <div class="service-eyebrow">Service</div>
+        <h1>Demand Validation</h1>
+        <p>
+          Test product-market fit before you invest. Primary research with real buyers to validate demand, willingness to pay, and adoption barriers in healthcare markets.
+        </p>
+        <a href="contact" class="btn-primary">Discuss This Service</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="section problem-section">
+    <div class="container">
+      <div class="problem-content">
+        <div class="section-header">
+          <div class="section-eyebrow">The Challenge</div>
+          <h2 class="section-title">Assumptions Are Expensive</h2>
+        </div>
+        <p>
+          Building products based on assumptions about what customers want is one of the most expensive mistakes companies make. In healthcare, where development cycles are long and regulatory stakes are high, getting it wrong can be catastrophic.
+        </p>
+        <p>
+          The typical approach — building first, then testing demand — leads to products nobody wants, features nobody uses, and go-to-market strategies that miss the mark.
+        </p>
+        <p>
+          Demand validation flips this script. Talk to real buyers before you commit. Understand not just whether they'd theoretically want your product, but whether they'd actually buy it — and at what price.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="section benefits-section">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-eyebrow">What You Get</div>
+        <h2 class="section-title">What Demand Validation Delivers</h2>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>De-Risk Your Investment</h3>
+          <p>Know there's real demand before committing development resources. Kill projects early or double down with confidence.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Optimize Pricing Strategy</h3>
+          <p>Understand willingness to pay, price sensitivity, and value drivers. Set pricing that captures value without leaving money on the table.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Identify Adoption Barriers</h3>
+          <p>Learn what will stop customers from buying — procurement hurdles, integration concerns, switching costs — before they become surprises.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Sharpen Your Value Proposition</h3>
+          <p>Understand which features matter most and which are nice-to-haves. Build messaging that resonates with actual buyer priorities.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Approach Section -->
+  <section class="section approach-section">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-eyebrow">Our Approach</div>
+        <h2 class="section-title">How We Validate Demand</h2>
+      </div>
+      <div class="approach-steps">
+        <div class="approach-step">
+          <div class="step-number">01</div>
+          <h3>Hypothesis Development</h3>
+          <ul>
+            <li>Define the product concept and target buyer</li>
+            <li>Articulate key assumptions to test</li>
+            <li>Design research to challenge (not confirm) hypotheses</li>
+          </ul>
+        </div>
+        <div class="approach-step">
+          <div class="step-number">02</div>
+          <h3>Primary Research</h3>
+          <ul>
+            <li>In-depth interviews with target decision-makers</li>
+            <li>Concept testing with realistic scenarios</li>
+            <li>Quantitative surveys to validate qualitative findings</li>
+          </ul>
+        </div>
+        <div class="approach-step">
+          <div class="step-number">03</div>
+          <h3>Go/No-Go Recommendations</h3>
+          <ul>
+            <li>Clear assessment of demand signals and risks</li>
+            <li>Pricing and positioning recommendations</li>
+            <li>Prioritized feature roadmap based on buyer input</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What We Test Section -->
+  <section class="section testing-section">
+    <div class="container">
+      <div class="section-header centered">
+        <div class="section-eyebrow">What We Test</div>
+        <h2 class="section-title">Key Validation Questions</h2>
+      </div>
+      <div class="testing-grid">
+        <div class="testing-card">
+          <div class="testing-type">Problem Validation</div>
+          <p>Does the problem you're solving actually exist? Is it painful enough to justify action and budget allocation?</p>
+        </div>
+        <div class="testing-card">
+          <div class="testing-type">Solution Fit</div>
+          <p>Does your proposed solution address the problem effectively? Would buyers choose it over alternatives?</p>
+        </div>
+        <div class="testing-card">
+          <div class="testing-type">Willingness to Pay</div>
+          <p>What price can the market bear? What's the perceived value relative to current spending?</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Deliverables Section -->
+  <section class="section deliverables-section">
+    <div class="container">
+      <div class="deliverables-content">
+        <div>
+          <div class="section-header">
+            <div class="section-eyebrow">What You Receive</div>
+            <h2 class="section-title">Deliverables</h2>
+          </div>
+          <ul class="deliverables-list">
+            <li>
+              <div class="deliverable-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+              </div>
+              <div class="deliverable-text">
+                <strong>Demand Assessment</strong>
+                Clear verdict on market appetite, with supporting evidence
+              </div>
+            </li>
+            <li>
+              <div class="deliverable-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              </div>
+              <div class="deliverable-text">
+                <strong>Pricing Analysis</strong>
+                Willingness to pay ranges, value drivers, and pricing recommendations
+              </div>
+            </li>
+            <li>
+              <div class="deliverable-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+              </div>
+              <div class="deliverable-text">
+                <strong>Feature Prioritization</strong>
+                Must-have vs. nice-to-have features ranked by buyer importance
+              </div>
+            </li>
+            <li>
+              <div class="deliverable-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+              </div>
+              <div class="deliverable-text">
+                <strong>Risk & Barrier Analysis</strong>
+                Adoption obstacles and mitigation strategies
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="use-cases">
+          <h3>Common Use Cases</h3>
+          <ul class="use-cases-list">
+            <li>New product development decisions</li>
+            <li>Startup investment due diligence</li>
+            <li>Feature prioritization for existing products</li>
+            <li>Pricing strategy for product launches</li>
+            <li>Market expansion planning</li>
+            <li>Portfolio rationalization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-box-content">
+          <h2>Let's Validate Your Market Assumptions</h2>
+          <p>Tell us about your product or market. We'll help you test demand before you invest.</p>
+          <a href="contact" class="btn-primary">Start a Conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <a href="/" class="logo" style="color: var(--white); margin-bottom: 1rem;">
+            <span class="logo-icon"><img src="images/logos/lnqp-diamond.svg" alt=""></span>
+            LNQP
+          </a>
+          <p>Custom market research for healthcare and life sciences companies.</p>
+          <p class="footer-tagline">"Knowledge is of no value unless you put it into practice"</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services">All Services</a></li>
+            <li><a href="market-sizing">Market Sizing</a></li>
+            <li><a href="competitive-analysis">Competitive Analysis</a></li>
+            <li><a href="demand-validation">Demand Validation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about">About LNQP</a></li>
+            <li><a href="case-studies">Case Studies</a></li>
+            <li><a href="insights">Insights</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/apugachev/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+            <li><a href="mailto:artyom@lnqp.io">Email Us</a></li>
+            <li><a href="contact">Contact Form</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 LNQP. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy">Privacy Policy</a>
+          <a href="imprint">Imprint</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileNav = document.querySelector('.mobile-nav');
+    const mobileOverlay = document.querySelector('.mobile-overlay');
+
+    function toggleMenu() {
+      menuToggle.classList.toggle('active');
+      mobileNav.classList.toggle('active');
+      mobileOverlay.classList.toggle('active');
+      document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    mobileOverlay.addEventListener('click', toggleMenu);
+    mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', toggleMenu));
+  </script>
+</body>
+</html>

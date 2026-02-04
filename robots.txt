@@ -1,0 +1,7 @@
+# robots.txt for lnqp.io
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://lnqp.io/sitemap.xml

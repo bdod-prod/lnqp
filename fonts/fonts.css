@@ -1,0 +1,67 @@
+/* Self-hosted fonts for LNQP website */
+
+/* DM Sans - Body font */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('dm-sans-v17-latin-regular.woff2') format('woff2'),
+       url('dm-sans-v17-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('dm-sans-v17-latin-500.woff2') format('woff2'),
+       url('dm-sans-v17-latin-500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('dm-sans-v17-latin-600.woff2') format('woff2'),
+       url('dm-sans-v17-latin-600.woff') format('woff');
+}
+
+/* Plus Jakarta Sans - Heading font */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('plus-jakarta-sans-v12-latin-500.woff2') format('woff2'),
+       url('plus-jakarta-sans-v12-latin-500.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('plus-jakarta-sans-v12-latin-600.woff2') format('woff2'),
+       url('plus-jakarta-sans-v12-latin-600.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('plus-jakarta-sans-v12-latin-700.woff2') format('woff2'),
+       url('plus-jakarta-sans-v12-latin-700.woff') format('woff');
+}
+
+/* PT Serif - Accent font */
+@font-face {
+  font-family: 'PT Serif';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('pt-serif-v19-latin-700.woff2') format('woff2'),
+       url('pt-serif-v19-latin-700.woff') format('woff');
+}
