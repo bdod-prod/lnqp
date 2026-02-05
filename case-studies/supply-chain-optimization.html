@@ -220,19 +220,21 @@
       padding: 1rem 1.5rem;
     }
 
-    .mobile-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.5);
-      opacity: 0;
-      transition: opacity 0.3s;
-      z-index: 998;
-    }
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 998;
+  pointer-events: none;
+}
 
-    .mobile-overlay.active {
-      opacity: 1;
-    }
+.mobile-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 
 
